@@ -18,6 +18,7 @@ localparam  BIN_8   =  4'h8;
 localparam  BIN_9   =  4'h9;
 localparam  BIN_10   =  4'ha;
 localparam  BIN_11   =  4'hb;
+localparam  BIN_X   =  4'hx;
 
 /*
 * Grey Code
@@ -34,6 +35,7 @@ localparam  GREY_8   =  4'hf;
 localparam  GREY_9   =  4'he;
 localparam  GREY_10   =  4'hc;
 localparam  GREY_11   =  4'h8;
+localparam  GREY_x   =  4'hx;
 
 localparam  FULL   =  1'b1;
 localparam  EMPTY   =  1'b1;
@@ -57,6 +59,7 @@ function bin_to_grey;
     BIN_10  :  bin_to_grey = GREY_10 ;
     BIN_11  :  bin_to_grey = GREY_11 ;
     default : bin_to_grey = GREY_0 ;
+//    default : bin_to_grey = GREY_X ;
   endcase
 endfunction
 
@@ -79,6 +82,7 @@ function grey_to_bin;
       GREY_10  :  grey_to_bin = BIN_10 ; 
       GREY_11  :  grey_to_bin = BIN_11 ; 
       default :  grey_to_bin = BIN_0 ;
+//      default :  grey_to_bin = BIN_X ;
     endcase
 endfunction
 
@@ -145,6 +149,7 @@ function next_bin;
     BIN_10 : next_bin = BIN_11;
     BIN_11 : next_bin = BIN_0;
     default : next_bin = BIN_0;
+//    default : next_bin = BIN_X;
   endcase
 endfunction
 
@@ -152,18 +157,18 @@ endfunction
 function next_grey;
   input [ 3 : 0 ] ingrey;
   case( ingrey )
-    BIN_0 : next_grey = BIN_1;
-    BIN_1 : next_grey = BIN_2;
-    BIN_2 : next_grey = BIN_3;
-    BIN_3 : next_grey = BIN_4;
-    BIN_4 : next_grey = BIN_5;
-    BIN_5 : next_grey = BIN_6;
-    BIN_6 : next_grey = BIN_7;
-    BIN_7 : next_grey = BIN_8;
-    BIN_8 : next_grey = BIN_9;
-    BIN_9 : next_grey = BIN_10;
-    BIN_10 : next_grey = BIN_11;
-    BIN_11 : next_grey = BIN_0;
-    default : next_grey = BIN_0;
+    GREY_0 : next_grey = GREY_1;
+    GREY_1 : next_grey = GREY_2;
+    GREY_2 : next_grey = GREY_3;
+    GREY_3 : next_grey = GREY_4;
+    GREY_4 : next_grey = GREY_5;
+    GREY_5 : next_grey = GREY_6;
+    GREY_6 : next_grey = GREY_7;
+    GREY_7 : next_grey = GREY_8;
+    GREY_8 : next_grey = GREY_9;
+    GREY_9 : next_grey = GREY_10;
+    GREY_10 : next_grey = GREY_11;
+    GREY_11 : next_grey = GREY_0;
+    default : next_grey = GREY_0;
   endcase
 endfunction
